@@ -10962,3 +10962,36 @@ a.text-dark:focus {
   }
 }
 
+header {
+  background-color: black;
+  height: 80px;
+  padding-top: 10px;
+}
+
+header .logo img {
+  width: 60px;
+}
+
+main {
+  background-color: lightseagreen;
+}
+
+main .home {
+  height: calc(100vh - 100px);
+}
+
+main h1 {
+  font-size: 100px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+footer {
+  background-color: black;
+  text-align: center;
+}
+
+footer span {
+  color: white;
+}
+
