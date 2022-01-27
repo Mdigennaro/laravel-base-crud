@@ -17,6 +17,7 @@ class CreateFumettosTable extends Migration
             $table->id();
 
             $table->string('titolo',50);
+            $table->text('descrizione');
             $table->string('cover');
             $table->decimal('prezzo', 4, 2);
             $table->string('serie', 50);
