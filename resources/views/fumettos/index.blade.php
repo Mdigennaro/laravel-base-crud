@@ -2,7 +2,7 @@
 
 @section('content')
  <main class="d-flex justify-content-center align-items-center ">
-   <div class="home">
+   <div class="home text-center">
       <h1>fumetti</h1>
 
       <table class="table">
@@ -23,7 +23,7 @@
             <td>{{$fumetto->titolo}}</td>
             <td>{{$fumetto->serie}}</td>
             <td>{{$fumetto->prezzo}} €</td>
-            <td><a class="btn btn-outline-dark" >Info</a></td>
+            <td><a class="btn btn-outline-dark" href="{{route('fumettos.show',$fumetto)}}">Info</a></td>
           </tr>
             
           @endforeach

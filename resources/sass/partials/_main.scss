@@ -1,5 +1,6 @@
 main{
   background-color: lightseagreen;
+  min-height: calc(100vh - 100px);
 }
 
 
@@ -7,4 +8,8 @@ main h1{
   font-size: 100px;
   text-transform: uppercase ;
   font-weight: bold;
+}
+
+main label{
+  text-transform: uppercase;
 }

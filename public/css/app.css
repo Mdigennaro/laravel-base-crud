@@ -10974,6 +10974,7 @@ header .logo img {
 
 main {
   background-color: lightseagreen;
+  min-height: calc(100vh - 100px);
 }
 
 main h1 {
@@ -10982,9 +10983,14 @@ main h1 {
   font-weight: bold;
 }
 
+main label {
+  text-transform: uppercase;
+}
+
 footer {
   background-color: black;
   text-align: center;
+  height: 22px;
 }
 
 footer span {
