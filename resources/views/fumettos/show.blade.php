@@ -2,13 +2,13 @@
 
 @section('content')
 <main>
-  <div class="container text-center">
+  <div class="container text-center d-flex flex-column align-items-center">
     <h1 class="mb-0">fumetto</h1>
     <a href="#" class="btn btn-warning "><strong>Modifica</strong></a>
 
     <div class="fumetto d-flex">
       <div class="fumetto-left w-50">
-        <img class=" h-100" src="{{$fumetto->cover}}" alt="{{$fumetto->titolo}}">
+        <img class="w-75" src="{{$fumetto->cover}}" alt="{{$fumetto->titolo}}">
         
       </div>
       

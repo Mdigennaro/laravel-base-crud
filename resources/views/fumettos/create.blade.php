@@ -32,8 +32,12 @@
               <textarea type="text" class="form-control" id="descrizione" name="descrizione" placeholder="Descrizione ..."></textarea>
             </div>
             <div class="mb-3">
+              <label for="data_di_vedita" class="form-label">Data di vendita</label>
+              <input type="text" class="form-control" id="data_di_vendita" name="data_di_vendita">
+            </div>
+            <div class="mb-3">
               <label for="prezzo" class="form-label">Prezzo</label>
-              <input type="text" class="form-control" id="prezzo" placeholder="Prezzo in €">
+              <input type="number" class="form-control" id="prezzo" name="prezzo" placeholder="Prezzo in €">
             </div>
 
             <button type="submit" class="btn btn-success">Invia</button>
