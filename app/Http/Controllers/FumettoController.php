@@ -70,7 +70,9 @@ class FumettoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fumetto = Fumetto::find($id);
+
+        return view('fumettos.edit', compact('fumetto'));
     }
 
     /**
@@ -80,9 +82,13 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Fumetto $fumetto)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($data['titolo'], '-');
+        $fumetto->update($data);
+
+        return redirect()->route('fumettos.show', $fumetto);
     }
 
     /**
