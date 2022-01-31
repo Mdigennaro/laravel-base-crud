@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
               <label for="descrizione" class="form-label">Descrizione</label>
-              <textarea type="text" class="form-control @error('descrizione') is-invalid @enderror"  id="descrizione" name="descrizione" placeholder="Descrizione ...">{{old('titolo')}}</textarea>
+              <textarea type="text" class="form-control @error('descrizione') is-invalid @enderror"  id="descrizione" name="descrizione" placeholder="Descrizione ...">{{old('descrizione')}}</textarea>
             </div>
             <div class="mb-3">
               <label for="data_di_vedita" class="form-label">Data di vendita</label>
