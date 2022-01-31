@@ -40,41 +40,7 @@ class FumettoController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate(
-            [
-                'titolo'=>'required|max:50|min:2',
-                'descrizione'=>'required|min:5',
-                'cover'=>'required|max:250',
-                'prezzo'=>'required|numeric|min:1',
-                'serie'=>'required|max:50|min:2',
-                'data_di_vendita'=>'required|max:10|min:10',
-                'tipologia'=>'required|max:50|min:2',
-            ],
-            [
-                'titolo.required'=>'Il titolo è obbligatorio',
-                'titolo.max'=>'Il titolo può essere lungo massimo 50 caratteri',
-                'titolo.min'=>'Il titolo deve avere almeno 2 caratteri',
-                'descrizione.required'=>'Inserisci una descrizione',
-                'descrizione.min'=>'La descrizione deve avere più di cinque caratteri',
-                'cover.required'=>'Inserisci un\'indirizzo',
-                'cover.max'=>'L\'indirizzo non può essere più lungo di 250 caratteri',
-                'prezzo.required'=>'Inserisci il costo',
-                'prezzo.numeric'=>'Il prezzo deve essere inserito in numeri',
-                'prezzo.min'=>'Il prezzo deve essere inserito deve essere superiore ad 1€',
-                'serie.required'=>'La serie è obbligatoria',
-                'serie.max'=>'La serie può contenere massimo 50 caratteri',
-                'serie.min'=>'La serie deve avere almeno 2 caratteri',
-                'data_di_vendita.required'=>'Inserisci la data',
-                'data_di_vendita.max'=>'La data deve essere di 10 caratteri e come separatore deve esserci: -',
-                'data_di_vendita.min'=>'La data deve essere di 10 caratteri e come separatore deve esserci: -',
-                'titolo.required'=>'Il titolo è obbligatorio',
-                'titolo.max'=>'Il titolo può essere lungo massimo 50 caratteri',
-                'titolo.min'=>'Il titolo deve avere almeno 2 caratteri',
-                'tipologia.required'=>'La tipologia è obbligatorio',
-                'tipologia.max'=>'La tipologia può essere lunga massimo 50 caratteri',
-                'tipologia.min'=>'La tipologia deve avere almeno 2 caratteri'
-            ],
-        );
+        $request->validate( $this->validationData(), $this->validationErrors());
 
         $data = $request->all();
 
@@ -122,6 +88,8 @@ class FumettoController extends Controller
      */
     public function update(Request $request, Fumetto $fumetto)
     {
+        $request->validate($this->validationData(), $this->validationErrors());
+
         $data = $request->all();
         $data['slug'] = Str::slug($data['titolo'], '-');
         $fumetto->update($data);
@@ -140,5 +108,45 @@ class FumettoController extends Controller
         $fumetto->delete();
 
         return redirect()->route('fumettos.index')->with('deleted', " $fumetto->titolo è stato eliminato");
+    }
+
+    private function validationData(){
+        return [
+            'titolo'=>'required|max:50|min:2',
+            'descrizione'=>'required|min:5',
+            'cover'=>'required|max:250',
+            'prezzo'=>'required|numeric|min:1',
+            'serie'=>'required|max:50|min:2',
+            'data_di_vendita'=>'required|max:10|min:10',
+            'tipologia'=>'required|max:50|min:2',
+        ];
+    }
+
+    private function validationErrors(){
+        return [
+            'titolo.required'=>'Il titolo è obbligatorio',
+            'titolo.max'=>'Il titolo può essere lungo massimo 50 caratteri',
+            'titolo.min'=>'Il titolo deve avere almeno 2 caratteri',
+            'descrizione.required'=>'Inserisci una descrizione',
+            'descrizione.min'=>'La descrizione deve avere più di cinque caratteri',
+            'cover.required'=>'Inserisci un\'indirizzo',
+            'cover.max'=>'L\'indirizzo non può essere più lungo di 250 caratteri',
+            'prezzo.required'=>'Inserisci il costo',
+            'prezzo.numeric'=>'Il prezzo deve essere inserito in numeri',
+            'prezzo.min'=>'Il prezzo deve essere inserito deve essere superiore ad 1€',
+            'serie.required'=>'La serie è obbligatoria',
+            'serie.max'=>'La serie può contenere massimo 50 caratteri',
+            'serie.min'=>'La serie deve avere almeno 2 caratteri',
+            'data_di_vendita.required'=>'Inserisci la data',
+            'data_di_vendita.max'=>'La data deve essere di 10 caratteri e come separatore deve esserci: -',
+            'data_di_vendita.min'=>'La data deve essere di 10 caratteri e come separatore deve esserci: -',
+            'titolo.required'=>'Il titolo è obbligatorio',
+            'titolo.max'=>'Il titolo può essere lungo massimo 50 caratteri',
+            'titolo.min'=>'Il titolo deve avere almeno 2 caratteri',
+            'tipologia.required'=>'La tipologia è obbligatorio',
+            'tipologia.max'=>'La tipologia può essere lunga massimo 50 caratteri',
+            'tipologia.min'=>'La tipologia deve avere almeno 2 caratteri'
+        ];
+
     }
 }

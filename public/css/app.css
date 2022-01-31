@@ -10987,6 +10987,10 @@ main label {
   text-transform: uppercase;
 }
 
+main .errore {
+  color: red;
+}
+
 footer {
   background-color: black;
   text-align: center;
