@@ -5,6 +5,12 @@
    <div class="home text-center">
       <h1>fumetti</h1>
 
+      @if (session('deleted'))
+      <div class="alert alert-danger" role="alert">
+        {{session('deleted')}}
+      </div>
+      @endif
+
       <table class="table">
         <thead class="table-dark">
           <tr>

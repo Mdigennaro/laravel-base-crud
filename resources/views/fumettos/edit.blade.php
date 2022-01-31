@@ -5,6 +5,18 @@
     <div class="container text-center">
       <div class="row">
         <div class="col-8 offset-2">
+
+          @if ($errors->any())
+          <div class="alert alert-danger" role="alert">
+
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+            </ul>
+
+          </div>
+          @endif
           
           <h1 class="display-4">Modifica fumetto</h1>
           <h4>{{$fumetto->titolo}}</h4>
