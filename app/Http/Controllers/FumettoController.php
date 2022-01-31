@@ -16,7 +16,7 @@ class FumettoController extends Controller
     public function index()
     {
 
-        $listaFumetti = Fumetto::paginate(6);
+        $listaFumetti = Fumetto::/*orderBy('id', 'desc')->*/paginate(6);
 
         return view('fumettos.index', compact('listaFumetti'));
     }
@@ -39,6 +39,23 @@ class FumettoController extends Controller
      */
     public function store(Request $request)
     {
+
+       /* $request->validDate(
+            [
+                'titolo'=>'required|max:50|min:2',
+                'description'=>'required|min:5'
+            ],
+            [
+                'titolo.required'=>'Il titolo è obbligatorio',
+                'titolo.max'=>'Il titolo può essere lungo massimo 50 caratteri',
+                'titolo.min'=>'Il titolo deve avere almeno 2 caratteri'
+            ],
+            [
+                'description.required'=>'Inserisci una descrizione',
+                'description.min'=>'La descrizione deve avere più di cinque caratteri',
+            ],
+        );*/
+
         $data = $request->all();
 
         $new_fumetto = new Fumetto();
@@ -97,8 +114,10 @@ class FumettoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Fumetto $fumetto)
     {
-        //
+        $fumetto->delete();
+
+        return redirect()->route('fumettos.index')->with('deleted', " $fumetto->titolo è stato eliminato");
     }
 }

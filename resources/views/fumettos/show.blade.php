@@ -4,7 +4,18 @@
 <main>
   <div class="container text-center d-flex flex-column align-items-center">
     <h1 class="mb-0">fumetto</h1>
-    <a href="{{route('fumettos.edit', $fumetto)}}" class="btn btn-warning "><strong>Modifica</strong></a>
+
+    <div class="mb-2 d-flex align-items-center ">
+      <a href="{{route('fumettos.edit', $fumetto)}}" class="btn px-2 btn-warning "><strong>Modifica</strong></a>
+
+      <form class="px-2" action="{{route('fumettos.destroy', $fumetto)}}" onsubmit="return confirm('Sei sicuro di voler eliminare {{$fumetto->titolo}} ?')" method="POST">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit" class="btn btn-danger "><strong>Elimina</strong></button>
+
+      </form>
+    </div>
 
     <div class="fumetto d-flex">
       <div class="fumetto-left w-50">
